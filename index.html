@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#0f172a">
+    <title>StudyFlow AI</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- PWA Meta Tags -->
+<meta name="theme-color" content="#0f172a">
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="icon-192.png">
+</head>
+<body>
+    <header class="main-header">
+        <div class="header-content">
+            <h1>📘 StudyFlow AI</h1>
+            <p class="subtitle">Tu tutor personal con IA</p>
+        </div>
+        <div id="modelBadge" class="model-badge">Cargando...</div>
+    </header>
+
+    <main class="app-container">
+        <!-- Selector de Modelo -->
+        <section class="model-selector-section">
+            <label for="modelSelect">🤖 Modelo de IA:</label>
+            <select id="modelSelect" class="model-select">
+                <option value="">Cargando modelos...</option>
+            </select>
+        </section>
+
+        <!-- Selector de Modo de Estudio -->
+        <section class="mode-selector">
+            <button class="mode-btn active" data-mode="standard">
+                <span class="mode-icon">📚</span>
+                <span class="mode-label">Estándar</span>
+            </button>
+            <button class="mode-btn" data-mode="quiz">
+                <span class="mode-icon">❓</span>
+                <span class="mode-label">Quiz</span>
+            </button>
+            <button class="mode-btn" data-mode="flashcards">
+                <span class="mode-icon">📇</span>
+                <span class="mode-label">Flashcards</span>
+            </button>
+            <button class="mode-btn" data-mode="summary">
+                <span class="mode-icon">📝</span>
+                <span class="mode-label">Resumen</span>
+            </button>
+        </section>
+
+        <!-- Input Section -->
+        <section class="input-section">
+            <textarea id="topicInput" placeholder="Pega aquí tu tema, apuntes o pregunta...&#10;Ej: 'Explícame la fotosíntesis como si tuviera 10 años'"></textarea>
+            <button id="askBtn" class="btn-primary">
+                <span class="btn-text">Generar Estudio</span>
+                <span class="loader hidden"></span>
+            </button>
+        </section>
+
+        <!-- Response Area -->
+        <section id="responseArea" class="response-section hidden">
+            <div class="response-header">
+                <h2>🧠 Resultado</h2>
+                <div class="response-actions">
+                    <button id="copyBtn" class="btn-small">Copiar</button>
+                    <button id="saveBtn" class="btn-small btn-save">💾 Guardar</button>
+                </div>
+            </div>
+            <pre id="aiOutput"></pre>
+        </section>
+
+        <!-- Historial -->
+        <section class="history-section">
+            <div class="section-header">
+                <h2>📜 Historial de Estudio</h2>
+                <button id="clearHistoryBtn" class="btn-small btn-danger">Limpiar</button>
+            </div>
+            <div id="historyList" class="history-list">
+                <p class="empty-state">No hay estudios guardados aún</p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>💡 Consejo: Sé específico para mejores resultados</p>
+    </footer>
+
+<!-- Badge de Notificaciones -->
+<button id="notifBadge" class="notif-badge hidden">
+    <i class="fa-solid fa-bell"></i>
+    <span class="badge-count">0</span>
+</button>
+
+<!-- Modal de Novedades -->
+<div id="changelogModal" class="modal">
+    <div class="modal-content changelog-modal">
+        <div class="modal-header">
+            <h2><i class="fa-solid fa-bell"></i> Novedades</h2>
+            <button onclick="closeChangelog()" class="close-btn">&times;</button>
+        </div>
+        <div class="modal-body changelog-body">
+            <div id="changelogList"></div>
+        </div>
+    </div>
+</div>
+
+<!-- Toast Notification -->
+<div id="toast" class="toast hidden">
+    <div class="toast-icon">
+        <i class="fa-solid fa-circle-check"></i>
+    </div>
+    <div class="toast-content">
+        <div class="toast-title" id="toastTitle">Título</div>
+        <div class="toast-message" id="toastMessage">Mensaje</div>
+    </div>
+    <button onclick="closeToast()" class="toast-close">
+        <i class="fa-solid fa-times"></i>
+    </button>
+</div>
+
+    <script src="config.js"></script>
+<script src="app.js"></script>
+
+</body>
+</html>
