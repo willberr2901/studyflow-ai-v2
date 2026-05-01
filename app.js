@@ -1,7 +1,7 @@
 // CONFIGURACIÓN
 const CONFIG = {
-     API_KEY: window.APP_CONFIG?.GROQ_API_KEY || '',
-    PREFERRED_MODEL: window.APP_CONFIG?.PREFERRED_MODEL || 'llama-3.3-70b-versatile',
+     API_KEY: window.APP_ENV?.GROQ_API_KEY || '',
+    PREFERRED_MODEL: 'llama-3.3-70b-versatile',
     FALLBACK_MODEL: 'llama-3.1-8b-instant',
     ENDPOINT: 'https://api.groq.com/openai/v1/chat/completions',
     MODELS_ENDPOINT: 'https://api.groq.com/openai/v1/models',
